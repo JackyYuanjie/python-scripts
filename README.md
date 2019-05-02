@@ -8,6 +8,7 @@
 - [猫眼电影爬取](./spider/maoyan.py)
 - [今日头条街拍美图](./spider/TBeautyPicture.py)
 - [微博爬取](./spider/weibo.py)
+- [使用Python SDK查看ECS详细信息](./remoteapi/aliyunecs.py)
 <!-- tocstop -->
 
 **Python3爬虫开发实战**
