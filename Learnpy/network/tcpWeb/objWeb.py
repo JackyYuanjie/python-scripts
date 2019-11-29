@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+# 第6个.
 # 使用面向对象思想进行封装.
 # 目标: 能够使用面向对象思想,对web服务器进行封装.
 """
@@ -75,7 +76,7 @@ class WebServer(object):
         # 9.3 响应空行
         response_blank = "\r\n"
         # 9.4 响应主体
-        indexpath = "F:\\python-scripts\\DevOps\\network\\tcpWeb\\static\\index.html"
+        indexpath = "F:\\PythonProject\\python-scripts\\DevOps\\network\\tcpWeb\\static\\index.html"
 
         try:
             # 返回固定页面, 通过with读取文件.
@@ -106,4 +107,5 @@ def main():
     ws.start()
 
 
-    
+if __name__=="__main__":
+    main()

@@ -1,28 +1,22 @@
 # -*- coding:utf-8 -*-
 
+# 第三个.
+# 服务端返回固定页面
+# 实现返回一个固定的html页面,给浏览器的web服务器
 
-# 返回固定数据 return fixed data
 """
-TCP服务端
-1. 导入模块
-2. 创建套接字
-3. 设置地址重用
-4. 绑定端口
-5. 设置监听,让套接字由主动变被动接收.
-6. 接受客户端连接
-7. 接收客户端浏览器发送的请求协议.
-8. 判断请求协议是否为空.
-9. 拼接响应报文.
-   - 响应行
-   - 响应头
-   - 响应空行
-   - 响应主体
-10. 发送响应报文.
-11. 关闭和当前客户端的连接.
+1.功能分析
+- web服务器绑定固定端口
+- web服务器接受浏览器请求
+- web服务器遵守http协议,并根据网页index.html的内容给浏览器.
+- 当浏览器关闭后,web服务器能够显示断开连接.
+- web服务器短时间内重启,不会造成address already in use错误.
 """
 
 import socket
+import os
 
+indexpath = os.path.join(os.getcwd() + "\\python-scripts\\DevOps\\network\\tcpWeb\\index.html")
 
 def request_handler(new_client_socket,ip_port):
     """接收信息,并且做出响应"""
@@ -42,11 +36,16 @@ def request_handler(new_client_socket,ip_port):
     # 9.3 响应空行
     response_blank = "\r\n"
     # 9.4 响应主体
-    response_body = "test tcp web applications"
-    response_data = response_line + response_header + response_blank + response_body
+    # response_body = "test tcp web applications"
+    # 返回固定页面, 通过with读取文件.
+    with open(indexpath,"rb") as file:
+        # 把读取的文件内容返回给客户端.
+        response_body = file.read()
+
+    response_data = (response_line + response_header + response_blank).encode() + response_body
 
     # 10. 发送响应报文.
-    new_client_socket.send(response_data.encode())
+    new_client_socket.send(response_data)
 
     # 11. 关闭连接.
     new_client_socket.close()

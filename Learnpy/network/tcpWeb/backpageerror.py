@@ -1,44 +1,20 @@
 # -*- coding:utf-8 -*-
 
-# 返回指定页面内容
+# 第5个.
+# 返回指定页面存在的问题
+
 """
-1. 核心思路: 获取请求的资源路径.
-  - 解码请求的协议.
-  - 得到请求行
-  - 拆分请求行,得到请求的资源路径.
-  - 打开指定的文件.
+1.访问的页面不存在
+  解决方案: 对打开文件的代码,做异常捕获.
+2. 默认首页-直接访问地址:, 不加路径报错.
+解决思路: 如果直接访问, 请求行中可以以"/"作为默认条件. 
 """
 
-# 能够实现根据浏览器不同请求,返回对应网页的web服务器.
-"""
-1.功能分析
-- web服务器绑定固定端口
-- web服务器接受浏览器请求
-- web服务器遵守http协议,并根据网页index.html的内容给浏览器.
-- 当浏览器关闭后,web服务器能够显示断开连接.
-- web服务器短时间内重启,不会造成address already in use错误.
-
-2. 实现思路
-- 导入socket模块
-- 创建tcp套接字
-- 设置地址重用
-- 绑定端口
-- 设置监听,最大允许客户端连接数128(套接字由主动变被动)
-- 等待客户端连接(能够接受多个客户端连接)
-- 定义函数,实现客户端信息接收和响应.
-- 接收浏览器请求,判断请求是否为空.
-- 拼接响应报文
-- 定义变量保存响应报文内容
-- 获取浏览器发送的请求头信息,分析并得到请求html文件路径.
-- 根据通信信息,打开指定的html文件,并将内容给客户端浏览器.
-- 发送响应报文给客户端浏览器(注意编码问题)
-- 关闭此次连接的套接字.
-"""
 
 import socket
 import os
 
-indexpath = os.path.join(os.getcwd() + "\\python-scripts\\DevOps\\network\\tcpWeb\\index.html")
+indexpath = r"python-scripts\DevOps\network\tcpWeb\static"
 
 def request_handler(new_client_socket,ip_port):
     """接收信息,并且做出响应"""
@@ -69,6 +45,9 @@ def request_handler(new_client_socket,ip_port):
     # print(file_path)
     print("{a}正在请求:{b}".format(a=str(ip_port),b=file_path))
 
+    # 设置默认首页
+    if file_path == "/":
+        file_path = "/index.html"
 
     # 9. 拼接响应报文.
     # 9.1 响应行
@@ -78,11 +57,18 @@ def request_handler(new_client_socket,ip_port):
     # 9.3 响应空行
     response_blank = "\r\n"
     # 9.4 响应主体
-    # response_body = "test tcp web applications"
-    # 返回固定页面, 通过with读取文件.
-    with open(indexpath,"rb") as file:
-        # 把读取的文件内容返回给客户端.
-        response_body = file.read()
+    try:
+        # 返回固定页面, 通过with读取文件.
+        with open(indexpath + file_path,"rb") as file:
+            # 把读取的文件内容返回给客户端.
+            response_body = file.read()
+    except Exception as e:
+        # 重新修改响应行为404
+        response_line = "HTTP/1.1 404 Not Found\r\n"
+        # 响应的内容为错误.
+        response_body = "Error! {}".format(str(e))
+        # 把内容转换为字节码
+        response_body = response_body.encode()
 
     response_data = (response_line + response_header + response_blank).encode() + response_body
 
