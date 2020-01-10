@@ -7,7 +7,7 @@ import paramiko
 
 #实例化transport对象，并建立连接。
 # transport = paramiko.Transport(('18.18.23.102',22))
-# transport.connect(username='yuan',password='123.cn')
+# transport.connect(username='yuan',password='xxxxxx')
 
 #实例sftp对象，指定连接对象
 # sftp = paramiko.SFTPClient.from_transport(transport)
@@ -27,7 +27,7 @@ import paramiko,sys,os
 hostname = '18.18.23.102'
 port = 22
 username='yuan'
-password='123.cn'
+password='xxx'
 local_path=sys.argv[1]
 remote_path=sys.argv[2]
 
@@ -55,4 +55,3 @@ except IOError:
     print("上传失败")
 finally:
     s.close()
-

@@ -6,7 +6,7 @@ import time
 # 脚本中运行时密码处理.
 ip_address = "18.18.23.2"
 username = "root"
-password = "yibot8"
+password = "xxx"
 
 ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())

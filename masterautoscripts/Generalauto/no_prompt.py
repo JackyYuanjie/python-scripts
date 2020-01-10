@@ -17,7 +17,7 @@ else:
 
 
 passwd = getpass.getpass(prompt='Enter your password:')
-if passwd == '123.cn':
+if passwd == 'xxx':
     print("input password successful")
 else:
     print('input password is incorrect!!')

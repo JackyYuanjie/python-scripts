@@ -22,5 +22,3 @@ if __name__ == "__main__":
     process_obj.start()
 
     print("主线程...")
-
-

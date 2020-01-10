@@ -7,9 +7,9 @@ from email.header import Header
 """
 # sendmail访问方法:
 
-sender = "13641323756@163.com"  # 发送邮件的账号
+sender = "xxxxxx@163.com"  # 发送邮件的账号
 # 接收邮件的邮箱账号.
-receivers = ["devops_yj@163.com","1976475582@qq.com"]  
+receivers = ["xxxxxx@163.com","xxxxxx@qq.com"]  
 
 # 第一个参数: 设置文本内容,第二个参数:plain设置文本格式
 message = MIMEText('smtp代码测试',"plain","utf-8")
@@ -32,13 +32,13 @@ except smtplib.SMTPException:
 
 # 使用其他服务商的SMTP访问
 mail_host = "smtp.163.com"  # 设置163的服务器
-mail_user = "devops_yj@163.com"
-mail_pass = "devops"
+mail_user = "xxxxxx@163.com"
+mail_pass = "xxxxxx"
 
 # 发送邮件的邮箱地址
-sender = "devops_yj@163.com"
+sender = "xxxxxx@163.com"
 # 接收邮件的邮箱地址
-receivers = ['13641323756@163.com']
+receivers = ['xxxxxx@163.com']
 
 message = MIMEText('Python邮件测试...','plain','utf-8')
 message['From'] = Header("测试smtp代码","utf-8")

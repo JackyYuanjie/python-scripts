@@ -13,7 +13,7 @@ try:
         host = '127.0.0.1',
         port = 3306,
         user = 'root',
-        passwd = '123.cn',
+        passwd = 'xxxx',
         db = 'abc',
         )
 
@@ -38,7 +38,7 @@ conn = MySQLdb.Connect(
     host='127.0.0.1',
     port=3306,
     user='root',
-    passwd='123.cn',
+    passwd='xxx',
     db='abc',
 )
 

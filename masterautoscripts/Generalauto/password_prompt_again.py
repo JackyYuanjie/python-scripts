@@ -8,7 +8,7 @@ while True:
     username = input('Input your linux username:')
     passwd = getpass.getpass('Input your Linux user password:')
 
-    if username == 'root' and passwd == '123.cn':
+    if username == 'root' and passwd == 'xxx':
         print("Disable {} remote login.".format(username))
     elif username == '' and passwd == '':
         print("Please re-enter your login username and password")

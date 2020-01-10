@@ -21,5 +21,3 @@ if __name__=="__main__":
     # 启动子线程
     thread_sing.start()
     thread_dance.start()
-
-

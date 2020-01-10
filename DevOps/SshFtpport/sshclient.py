@@ -9,7 +9,7 @@ import paramiko
 hostname='18.18.23.102'
 port = 22
 username = 'yuan'
-password = '123.cn'
+password = 'xxx'
 
 client = paramiko.SSHClient()  #绑定实例
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -33,7 +33,7 @@ import paramiko,sys
 hostname='18.18.23.102'
 port = 22
 username = 'yuan'
-password = '123.cn'
+password = 'xxx'
 command=sys.argv[1]
 
 #实例化一个transport对象
@@ -68,7 +68,7 @@ import paramiko,os,select,sys
 hostname='18.18.23.102'
 port = 22
 username = 'yuan'
-password = '123.cn'
+password = 'xxx'
 
 #建立一个socket
 trans = paramiko.Transport((hostname,port))

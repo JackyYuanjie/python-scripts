@@ -36,7 +36,7 @@ def ssh_multi(ip,port,username,passwd,cmd):
 def main():
     cmd = ['cal','ls','ifconfig ens37','ifconfig ens38']  # List of executed commands
     username = "yuan"  # username
-    passwd = "123.cn"
+    passwd = "xxx"
     threads = []  # multithreads
     print("Begin multi thread...")
     for i in range(1,130):

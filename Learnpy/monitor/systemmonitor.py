@@ -40,8 +40,8 @@ def WindowMonitor(time):
 
     if cpuuse > 80 or memoryinfo.percent > 85:
     # 发送邮件
-        yagobj = yagmail.SMTP(user="13641323756@163.com",password="JackyLi666",host="smtp.163.com")
-        yagobj.send("devops_yj@163.com","windows系统监控信息",log_str)
+        yagobj = yagmail.SMTP(user="xxxxxx@163.com",password="xxxxxx",host="smtp.163.com")
+        yagobj.send("xxxxx@163.com","windows系统监控信息",log_str)
 
 def main():
     # while True:
