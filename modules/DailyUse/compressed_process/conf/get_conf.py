@@ -9,17 +9,20 @@ class GetConf(object):
 
     def __init__(self):
         self.cf = configparser.ConfigParser()
-        self.cf.read("../conf/config.ini", encoding="utf-8-sig")
+        self.cf.read("F:\PythonProject\python-scripts\modules\DailyUse\compressed_process\conf\config.ini", encoding="utf-8-sig")
 
     def get(self, section, option):
         return self.cf.get(section, option)
 
-    def filepath(self):
+    def file_path(self):
         readdict = {
             "rarpath": self.get("filepath", "rarpath"),
             "zippath": self.get("filepath", "zippath"),
+            "targzpath": self.get("filepath", "targzpath"),
         }
         return readdict
 
 
-
+if __name__=='__main__':
+    gc = GetConf()
+    print(gc.file_path())
